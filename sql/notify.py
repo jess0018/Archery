@@ -259,7 +259,7 @@ def notify_for_execute(workflow):
         # 判断上线语句是否存在DDL，存在则通知相关人员
         if workflow.syntax_type == 1:
             # 消息内容通知
-            msg_title = '[Archery]有新的DDL语句执行完成#{}'.format(audit_id)
+            msg_title = '[校宝EasySQL]有新的DDL语句执行完成#{}'.format(audit_id)
             msg_content = '''发起人：{}\n变更组：{}\n变更实例：{}\n变更数据库：{}\n工单名称：{}\n工单地址：{}\n工单预览：{}\n'''.format(
                 Users.objects.get(username=workflow.engineer).display,
                 workflow.group_name,
@@ -285,10 +285,10 @@ def notify_for_binlog2sql(task):
     if not __notify_cnf_status():
         return None
     if task.success:
-        msg_title = '[Archery 通知]Binlog2SQL执行结束'
+        msg_title = '[校宝EasySQL 通知]Binlog2SQL执行结束'
         msg_content = f'解析的SQL文件为{task.result[1]}，请到指定目录查看'
     else:
-        msg_title = '[Archery 通知]Binlog2SQL执行失败'
+        msg_title = '[校宝EasySQL 通知]Binlog2SQL执行失败'
         msg_content = f'{task.result}'
     # 发送
     msg_to = [task.kwargs['user']]
