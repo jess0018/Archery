@@ -108,8 +108,8 @@ def email(request):
         result['status'] = 1
         result['msg'] = '请先完善当前用户邮箱信息！'
         return HttpResponse(json.dumps(result), content_type='application/json')
-    bd = 'Archery 邮件发送测试...'
-    subj = 'Archery 邮件发送测试'
+    bd = '校宝EasySQL 邮件发送测试...'
+    subj = '校宝EasySQL 邮件发送测试'
     sender = MsgSender(server=mail_smtp_server, port=mail_smtp_port, user=mail_smtp_user,
                        password=mail_smtp_password, ssl=mail_ssl)
     sender_response = sender.send_email(subj, bd, [request.user.email])
